@@ -21,6 +21,7 @@ pipeline {
         stage('Delivery'){
             steps{
                 sh 'npm run ng build --prod'
+                sh 'mv dist/simple-web/* /var/www/html'
             }
         }
     }
