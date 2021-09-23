@@ -20,7 +20,7 @@ pipeline {
 
         stage('Delivery'){
             steps{
-                sh './node_modules/.bin/ng build --prod'
+                sh 'node_modules/.bin/ng build --prod'
             }
         }
     }
