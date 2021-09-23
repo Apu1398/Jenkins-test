@@ -8,7 +8,6 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'cd simple-web'
                 sh 'npm install' 
             }
         }
