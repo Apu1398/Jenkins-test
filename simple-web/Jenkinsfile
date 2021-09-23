@@ -17,5 +17,11 @@ pipeline {
                 sh 'echo testing app...'
             }
         }
+
+        stage('Delivery'){
+            steps{
+                sh 'ng build -prod'
+            }
+        }
     }
 }
