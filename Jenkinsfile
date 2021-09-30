@@ -1,14 +1,8 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:lts-buster-slim' 
-            args '-p 3000:3000' 
-        }
-    }
-    stages {
+   stages {
         stage('Build') { 
             steps {
-                sh 'npm install' 
+                sh 'docker build -t angular'
             }
         }
 
@@ -20,8 +14,7 @@ pipeline {
 
         stage('Delivery'){
             steps{
-                sh 'npm run ng build --prod'
-                sh 'mv dist/simple-web/* /var/www/html'
+                sh 'docker run --rm angular'
             }
         }
     }
