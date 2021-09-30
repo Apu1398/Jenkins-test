@@ -2,7 +2,7 @@ pipeline {
    stages {
         stage('Build') { 
             steps {
-                sh 'docker build -t angular'
+                sh 'docker build -t angular-app'
             }
         }
 
@@ -14,7 +14,7 @@ pipeline {
 
         stage('Delivery'){
             steps{
-                sh 'docker run --rm angular'
+                sh 'docker run -d -p 4300:80 angular-app:latest'
             }
         }
     }
