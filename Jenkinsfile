@@ -2,11 +2,8 @@ pipeline {
     agent {
         docker {
             image 'node:lts'
-            args '-p 3000:4200'
+            args '-p 4200:4200'
         }
-    }
-    environment {
-        CI = 'true'
     }
     stages {
         stage('Build') {
