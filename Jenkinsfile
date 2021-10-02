@@ -4,7 +4,7 @@ pipeline {
         stage('Build') { 
             steps {
                 sh """
-                docker build -t angular-app
+                docker build -t angular-app .
                 """
             }
         }
