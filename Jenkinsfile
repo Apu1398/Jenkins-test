@@ -16,7 +16,7 @@ pipeline {
         stage('Delivery'){
             steps{
                 sh """
-                docker run --rm -p 4300:80 angular-app:latest
+                docker run -d -p 4300:80 angular-app:latest
                 """
                 input message: 'Finished using the web site?'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
