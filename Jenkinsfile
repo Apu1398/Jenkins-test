@@ -1,26 +1,27 @@
 pipeline {
-    agent any
-   stages {
-        stage('Build') { 
+    agent {
+        docker {
+            image 'node:lts'
+            args '-p 3000:3000'
+        }
+    }
+    environment {
+        CI = 'true'
+    }
+    stages {
+        stage('Build') {
             steps {
-                sh """
-                docker build -t angular-app .
-                """
+                sh 'npm install'
             }
         }
-
-        stage('Test') { 
+        stage('Test') {
             steps {
                 sh 'echo testing app...'
             }
         }
-
-        stage('Delivery'){
-            steps{
-                sh """
-                docker run -d -p 4300:80 angular-app:latest
-                """
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+        stage('Deliver') {
+            steps {
+                sh 'ng serve'                
             }
         }
     }
