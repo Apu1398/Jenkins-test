@@ -18,7 +18,7 @@ pipeline {
         stage('Delivery'){
             steps{
                 sh """
-                docker run -d -p 4300:80 angular-app:latest'
+                docker run -d -p 4300:80 angular-app:latest
                 """
             }
         }
