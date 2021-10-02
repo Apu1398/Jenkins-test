@@ -20,7 +20,7 @@ pipeline {
                 sh """
                 docker run -d -p 4300:80 angular-app:latest
                 """
-                input message: 'Finished using the web site?'
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
             }
         }
     }
