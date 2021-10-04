@@ -14,7 +14,7 @@ pipeline {
         stage('Delivery'){
             steps{
                 bat '''  docker build -t angular-jenkins . '''
-                bat ''' docker run -d -p 4300:80 --name jenkins-angular angular-jenkins:latest  '''
+                bat ''' docker run -d -p 4300:80  angular-jenkins:latest  '''
             }
         }
     }
