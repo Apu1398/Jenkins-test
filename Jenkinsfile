@@ -17,6 +17,9 @@ pipeline {
                 bat ''' %@Try%
                              docker stop jenkins-angular
                         %@EndTry%
+                        @Catch
+                            ECHO No existe el docker 
+                        @EndCatch
                     '''
                 bat ''' docker run -d -p 4300:80 --name jenkins-angular angular-jenkins:latest  '''
             }
