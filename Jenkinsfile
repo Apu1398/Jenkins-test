@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Delivery'){
             steps{
-                bat '''  ECHO delivery  '''
+                bat '''  ng serve  '''
             }
         }
     }
