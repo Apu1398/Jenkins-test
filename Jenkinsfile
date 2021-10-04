@@ -3,7 +3,7 @@ pipeline {
    stages {
         stage('Build') { 
             steps {
-                bat '''  npm install  '''
+                bat '''  docker build -t angular-jenkins '''
                 
             }
         }
@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Delivery'){
             steps{
-                bat '''  npm run ng serve  '''
+                bat ''' docker run -d -p 4300:80 angular-jenkins:latest  '''
             }
         }
     }
