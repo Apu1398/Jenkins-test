@@ -3,8 +3,7 @@ pipeline {
    stages {
         stage('Build') { 
             steps {
-                bat '''  docker build -t angular-jenkins . '''
-                
+                bat ''' ECHO building '''
             }
         }
         stage('Test') { 
@@ -14,7 +13,7 @@ pipeline {
         }
         stage('Delivery'){
             steps{
-                
+                bat '''  docker build -t angular-jenkins . '''
                 bat ''' docker run -d -p 4300:80 --name jenkins-angular angular-jenkins:latest  '''
             }
         }
