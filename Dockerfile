@@ -25,4 +25,4 @@ FROM nginx:latest
 COPY --from=build /usr/local/app/dist/simple-web /usr/share/nginx/html
 
 # Expose port 80
-EXPOSE 4300
+EXPOSE 80
