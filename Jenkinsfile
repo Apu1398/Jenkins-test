@@ -3,7 +3,7 @@ pipeline {
    stages {
         stage('Build') { 
             steps {
-                bat '''  docker build -t angular-jenkins '''
+                bat '''  docker build -t angular-jenkins . '''
                 
             }
         }
