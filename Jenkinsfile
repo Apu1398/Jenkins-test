@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Delivery'){
             steps{
-                bat '''  ng serve  '''
+                bat '''  npm run ng serve  '''
             }
         }
     }
