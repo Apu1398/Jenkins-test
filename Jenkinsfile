@@ -3,13 +3,8 @@ pipeline {
    stages {
         stage('Build') { 
             steps {
-                bat ''' cd WebApp '''
-                bat ''' npm i'''
-                bat ''' npm run build '''
-                bat ''' docker build -t web-app .'''
-                bat ''' cd ../Api '''
-                bat ''' npm i '''
-                bat ''' docker build -t api .'''
+                bat ''' cd WebApp & npm i & npm run build & docker build -t web-app .'''
+                bat ''' cd Api & npm i & docker build -t api .'''
             }
         }
         stage('Test') { 
