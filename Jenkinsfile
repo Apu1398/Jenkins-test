@@ -3,7 +3,13 @@ pipeline {
    stages {
         stage('Build') { 
             steps {
-                bat ''' ECHO building '''
+                bat ''' cd WebApp '''
+                bat ''' npm i'''
+                bat ''' npm run build '''
+                bat ''' docker build -t web-app .'''
+                bat ''' cd ../Api '''
+                bat ''' npm i '''
+                bat ''' docker build -t api .'''
             }
         }
         stage('Test') { 
@@ -13,10 +19,8 @@ pipeline {
         }
         stage('Delivery'){
             steps{
-                bat ''' docker build -t angular-jenkins . '''
-                bat ''' docker stop jenkins-angular '''
-                bat ''' docker rm jenkins-angular  '''
-                bat ''' docker run -d -p 4300:80 --name jenkins-angular angular-jenkins:latest  '''
+                bat ''' FOR /f "tokens=*" %i IN ('docker ps -q') DO docker stop %i '''
+                bat ''' docker-compose up -d '''
             }
         }
     }
